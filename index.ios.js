@@ -6,6 +6,7 @@ const {
   AppRegistry,
   Image,
   ListView,
+  NavigatorIOS,
   StyleSheet,
   Text,
   View,
@@ -13,7 +14,18 @@ const {
 
 let API_URL = 'https://api.reddit.com/r/reactjs/hot';
 
-var ReactNativeDemo = React.createClass({
+let ReactNativeDemo = React.createClass({
+  render() {
+    return (
+      <NavigatorIOS style={styles.navigator} initialRoute={{
+                      title: "/r/reactjs",
+                      component: IndexPage
+                    }} />
+    );
+  }
+});
+
+let IndexPage = React.createClass({
   getInitialState() {
     return {
       dataSource: new ListView.DataSource({
@@ -50,6 +62,8 @@ var ReactNativeDemo = React.createClass({
     let { data: listing } = listingData;
     let { thumbnail } = listing;
 
+    console.log('listing: ', listing);
+
     if (thumbnail === 'self' || thumbnail === 'default') {
       thumbnail = 'https://www.reddit.com/static/self_default2.png';
     }
@@ -72,20 +86,23 @@ var ReactNativeDemo = React.createClass({
     }
 
     return (
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={this.renderRow}
-        style={styles.listView} />
+      <View style={styles.container}>
+        <ListView dataSource={this.state.dataSource}
+                  renderRow={this.renderRow}
+                  style={styles.listView} />
+      </View>
     );
   }
 });
 
-var styles = StyleSheet.create({
+let styles = StyleSheet.create({
+  navigator: {
+    flex: 1
+  },
+
   container: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
 
@@ -94,7 +111,7 @@ var styles = StyleSheet.create({
   },
 
   listView: {
-    paddingTop: 20,
+    paddingTop: 64,
     backgroundColor: '#F5FCFF',
   },
 
