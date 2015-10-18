@@ -9,6 +9,7 @@ const {
   NavigatorIOS,
   StyleSheet,
   Text,
+  TouchableHighlight,
   View,
 } = React;
 
@@ -50,6 +51,14 @@ let IndexPage = React.createClass({
       }).done();
   },
 
+  rowPressed(listing) {
+    this.props.navigator.push({
+      title: listing.title,
+      component: DetailPage,
+      passProps: {listing},
+    });
+  },
+
   renderLoadingView() {
     return (
       <View style={styles.container}>
@@ -62,21 +71,21 @@ let IndexPage = React.createClass({
     let { data: listing } = listingData;
     let { thumbnail } = listing;
 
-    console.log('listing: ', listing);
-
     if (thumbnail === 'self' || thumbnail === 'default') {
       thumbnail = 'https://www.reddit.com/static/self_default2.png';
     }
 
     return (
-      <View style={styles.container}>
-        <Image style={styles.thumbnail}
-               source={{uri: thumbnail}} />
+      <TouchableHighlight onPress={this.rowPressed.bind(this, listing)}>
+        <View style={styles.container}>
+          <Image style={styles.thumbnail}
+                 source={{uri: thumbnail}} />
 
-        <View style={styles.rightContainer}>
-          <Text style={styles.title}>{listing.title}</Text>
+          <View style={styles.rightContainer}>
+            <Text style={styles.title}>{listing.title}</Text>
+          </View>
         </View>
-      </View>
+      </TouchableHighlight>
     );
   },
 
@@ -90,6 +99,20 @@ let IndexPage = React.createClass({
         <ListView dataSource={this.state.dataSource}
                   renderRow={this.renderRow}
                   style={styles.listView} />
+      </View>
+    );
+  }
+});
+
+let DetailPage = React.createClass({
+  render() {
+    let { listing } = this.props;
+
+    return (
+      <View style={styles.detailPage}>
+        <Text style={styles.detailPageTitle}>{listing.title}</Text>
+
+        <Text>{listing.selftext}</Text>
       </View>
     );
   }
@@ -113,6 +136,15 @@ let styles = StyleSheet.create({
   listView: {
     paddingTop: 64,
     backgroundColor: '#F5FCFF',
+  },
+
+  detailPage: {
+    paddingTop: 64,
+    backgroundColor: '#F5FCFF'
+  },
+
+  detailPageTitle: {
+    fontSize: 24
   },
 
   thumbnail: {
