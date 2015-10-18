@@ -2,6 +2,8 @@
 
 A Reddit Client powered by React Native
 
+<img src="https://raw.githubusercontent.com/osxi/ReactNativeDemo/gh-pages/screenshot.png" width="320" height="568">
+
 ## Prerequisites
 
   - See [Getting Started](https://facebook.github.io/react-native/docs/getting-started.html#content)
