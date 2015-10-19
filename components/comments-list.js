@@ -40,7 +40,9 @@ const CommentsList = React.createClass({
     let { data } = this.state;
 
     if (data.length === 0) {
-      return (<Text>No comments yet.</Text>);
+      return (
+        <Text style={styles.noComments}>No comments yet.</Text>
+      );
     }
 
     return data.map(comment => {
@@ -69,6 +71,10 @@ const CommentsList = React.createClass({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#F5FCFF'
+  },
+
+  noComments: {
+    padding: 10
   }
 });
 

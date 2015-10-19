@@ -7,16 +7,29 @@ const {
   View,
   ScrollView,
   Text,
-  StyleSheet
+  StyleSheet,
+  WebView
 } = React;
 
 const DetailPage = React.createClass({
+  goToLink() {
+    let { url } = this.props.listing;
+
+    this.props.navigator.push({
+      title: url,
+      component: WebView,
+      passProps: {url},
+    });
+  },
+
   render() {
     let { listing } = this.props;
 
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.title}>{listing.title}</Text>
+        <Text style={styles.title} onPress={this.goToLink}>
+          {listing.title}
+        </Text>
 
         <Text style={styles.selfText}>{listing.selftext}</Text>
 

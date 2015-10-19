@@ -51,10 +51,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
 
-  ups: {
-
-  },
-
   body: {
     paddingBottom: 10
   }
