@@ -3,6 +3,7 @@
 A Reddit Client powered by React Native
 
 <img src="https://raw.githubusercontent.com/osxi/ReactNativeDemo/gh-pages/screenshot.png" width="320" height="568">
+<img src="https://raw.githubusercontent.com/osxi/ReactNativeDemo/gh-pages/screenshot_detail.png" width="320" height="568">
 
 ## Prerequisites
 
