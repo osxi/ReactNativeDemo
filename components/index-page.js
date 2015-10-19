@@ -1,5 +1,6 @@
 'use strict';
 
+const config = require('./../config');
 const ListingRow = require('./listing-row');
 const Loading = require('./loading');
 const React = require('react-native');
@@ -11,7 +12,7 @@ const {
   View,
 } = React;
 
-const API_URL = 'https://api.reddit.com/r/reactjs/hot';
+const API_URL = `${config.API_ROOT_URL}/r/reactjs/hot`;
 
 const IndexPage = React.createClass({
   getInitialState() {

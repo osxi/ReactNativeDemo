@@ -1,9 +1,11 @@
 'use strict';
 
+const CommentsList = require('./comments-list');
 const React = require('react-native');
 
 const {
   View,
+  ScrollView,
   Text,
   StyleSheet
 } = React;
@@ -13,22 +15,28 @@ const DetailPage = React.createClass({
     let { listing } = this.props;
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Text style={styles.title}>{listing.title}</Text>
 
-        <Text>{listing.selftext}</Text>
-      </View>
+        <Text style={styles.selfText}>{listing.selftext}</Text>
+
+        <CommentsList listing={listing} />
+      </ScrollView>
     );
   }
 });
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 64,
     backgroundColor: '#F5FCFF'
   },
 
+  selfText: {
+    padding: 10
+  },
+
   title: {
+    padding: 10,
     fontSize: 24
   }
 });
