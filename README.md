@@ -1,5 +1,7 @@
 # ReactNativeDemo
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/osxi/ReactNativeDemo.svg)](https://greenkeeper.io/)
+
 A Reddit Client powered by React Native
 
 <img src="https://raw.githubusercontent.com/osxi/ReactNativeDemo/gh-pages/screenshot.png" width="320" height="568">
